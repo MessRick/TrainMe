@@ -1,0 +1,21 @@
+{% extends "codeposter/menu.html" %}
+{% block title %}Title{% endblock %}
+{% block content %}
+{% if posts %}
+<div align="center" style="margin: 50px auto">
+        {% for post in posts %}
+    <div class="container col-md-8" align="center" style = "box-shadow: 0 0 10px rgba(0,0,0,0.5);border-radius:5px;margin: 30px">
+            <div class="text-center" style = "margin:30px">
+            <br>
+                <h4 style = "margin: 10px">{{post.header }}</h4>
+                <h4 style = "margin: 15px">Programming Language: {{ post.programming_language.language_name }}</h4>
+                <h6 style = "margin: 15px">{{ post.code}}</h6>
+            </div>
+         <br>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+    <p>There are no posts yet.</p>
+{% endif %}
+{% endblock %}

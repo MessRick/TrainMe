@@ -1,0 +1,15 @@
+{% extends "codeposter/menu.html" %}
+{% block title %}Title{% endblock %}
+{% block content %}
+    <div class="container" align="center" style="margin: 50px auto">
+            <div class="card col-md-10"style = "box-shadow: 0 0 10px rgba(0,0,0,0.5);border-radius:5px">
+                <form class="form-horizontal" method="post" style = "margin: 25px">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input class="btn btn-success" type="submit" value="Post!"/>
+                <form/>
+            </div>
+        </div>
+         <br>
+    </div>
+{% endblock %}
