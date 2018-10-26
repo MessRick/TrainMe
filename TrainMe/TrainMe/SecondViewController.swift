@@ -32,6 +32,12 @@ class SecondViewController: UIViewController,UICollectionViewDataSource,UICollec
         layout.minimumInteritemSpacing = 10
         layout.minimumLineSpacing = 20
         
+        let width = MyCollectionView.frame.width-68
+        let height = CGFloat(114)
+        
+        let cellSize = CGSize(width: width, height: height)
+        layout.itemSize = cellSize
+        
     }
 
     
@@ -42,18 +48,12 @@ class SecondViewController: UIViewController,UICollectionViewDataSource,UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
-        
+
+        cell.caloriesLabel.text = "20 ccal"
         cell.CellLabel.text = namesOfDiches[indexPath.item]
-        cell.layer.cornerRadius = 10
-        cell.layer.shadowColor = UIColor.black.cgColor
-        cell.layer.shadowOffset = CGSize(width: 2, height: 2)
-        cell.layer.shadowOpacity = 0.2
-        cell.layer.shadowRadius = 4.0
-        cell.layer.masksToBounds = false
+      
         cell.MyImage.image = UIImage(named: imagesName[indexPath.item])
-        cell.MyImage.contentMode = .scaleToFill
-        cell.MyImage.layer.cornerRadius = 10
-        cell.MyImage.layer.masksToBounds = true
+        
         return cell
     }
     

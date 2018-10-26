@@ -7,14 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8910924B215AC54900989682 /* steyki_iz_cvetnoy_kapusty.txt in Resources */ = {isa = PBXBuildFile; fileRef = 89109249215AC54900989682 /* steyki_iz_cvetnoy_kapusty.txt */; };
-		8910924C215AC54900989682 /* lepeshki_iz_kartofelya_i_chechevicy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8910924A215AC54900989682 /* lepeshki_iz_kartofelya_i_chechevicy.txt */; };
 		8910924E215B04AF00989682 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8910924D215B04AE00989682 /* libsqlite3.0.tbd */; };
-		891763AC2153F35F00274B37 /* tako_salsa-verde.txt in Resources */ = {isa = PBXBuildFile; fileRef = 891763AB2153F35F00274B37 /* tako_salsa-verde.txt */; };
-		891763AE2153F3CF00274B37 /* syrnyy_kartofel.txt in Resources */ = {isa = PBXBuildFile; fileRef = 891763AD2153F3CF00274B37 /* syrnyy_kartofel.txt */; };
-		891763B02153F47600274B37 /* oladi_iz_kabachkov.txt in Resources */ = {isa = PBXBuildFile; fileRef = 891763AF2153F47600274B37 /* oladi_iz_kabachkov.txt */; };
-		891763B22153F50F00274B37 /* zharenyy_fenhel.txt in Resources */ = {isa = PBXBuildFile; fileRef = 891763B12153F50F00274B37 /* zharenyy_fenhel.txt */; };
-		891763B42153F59700274B37 /* gorohovyy_sup.txt in Resources */ = {isa = PBXBuildFile; fileRef = 891763B32153F59600274B37 /* gorohovyy_sup.txt */; };
+		8913EEEA216CA6B6007DDD53 /* foods_recipe in Resources */ = {isa = PBXBuildFile; fileRef = 8913EEE9216CA6B6007DDD53 /* foods_recipe */; };
 		891763B62155225300274B37 /* TrainigsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891763B52155225300274B37 /* TrainigsClass.swift */; };
 		899957B42152E71D00451B9A /* FoodsViewComtroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899957B32152E71D00451B9A /* FoodsViewComtroller.swift */; };
 		89AC7B872152C8EA00BB0F88 /* FoodClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AC7B862152C8EA00BB0F88 /* FoodClass.swift */; };
@@ -51,14 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		89109249215AC54900989682 /* steyki_iz_cvetnoy_kapusty.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = steyki_iz_cvetnoy_kapusty.txt; path = ../../../../Desktop/steyki_iz_cvetnoy_kapusty.txt; sourceTree = "<group>"; };
-		8910924A215AC54900989682 /* lepeshki_iz_kartofelya_i_chechevicy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lepeshki_iz_kartofelya_i_chechevicy.txt; path = ../../../../Desktop/lepeshki_iz_kartofelya_i_chechevicy.txt; sourceTree = "<group>"; };
 		8910924D215B04AE00989682 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
-		891763AB2153F35F00274B37 /* tako_salsa-verde.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "tako_salsa-verde.txt"; path = "../../../../Desktop/tako_salsa-verde.txt"; sourceTree = "<group>"; };
-		891763AD2153F3CF00274B37 /* syrnyy_kartofel.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = syrnyy_kartofel.txt; path = ../../../../Desktop/syrnyy_kartofel.txt; sourceTree = "<group>"; };
-		891763AF2153F47600274B37 /* oladi_iz_kabachkov.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = oladi_iz_kabachkov.txt; path = ../../../../Desktop/oladi_iz_kabachkov.txt; sourceTree = "<group>"; };
-		891763B12153F50F00274B37 /* zharenyy_fenhel.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = zharenyy_fenhel.txt; path = ../../../../Desktop/zharenyy_fenhel.txt; sourceTree = "<group>"; };
-		891763B32153F59600274B37 /* gorohovyy_sup.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = gorohovyy_sup.txt; path = ../../../../Desktop/gorohovyy_sup.txt; sourceTree = "<group>"; };
+		8913EEE9216CA6B6007DDD53 /* foods_recipe */ = {isa = PBXFileReference; lastKnownFileType = folder; path = foods_recipe; sourceTree = "<group>"; };
 		891763B52155225300274B37 /* TrainigsClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainigsClass.swift; sourceTree = "<group>"; };
 		899957B32152E71D00451B9A /* FoodsViewComtroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodsViewComtroller.swift; sourceTree = "<group>"; };
 		89AC7B862152C8EA00BB0F88 /* FoodClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodClass.swift; sourceTree = "<group>"; };
@@ -110,20 +98,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		891763AA2153F33B00274B37 /* foods_recipe */ = {
-			isa = PBXGroup;
-			children = (
-				8910924A215AC54900989682 /* lepeshki_iz_kartofelya_i_chechevicy.txt */,
-				89109249215AC54900989682 /* steyki_iz_cvetnoy_kapusty.txt */,
-				891763B32153F59600274B37 /* gorohovyy_sup.txt */,
-				891763B12153F50F00274B37 /* zharenyy_fenhel.txt */,
-				891763AF2153F47600274B37 /* oladi_iz_kabachkov.txt */,
-				891763AD2153F3CF00274B37 /* syrnyy_kartofel.txt */,
-				891763AB2153F35F00274B37 /* tako_salsa-verde.txt */,
-			);
-			path = foods_recipe;
-			sourceTree = "<group>";
-		};
 		89D67CAE2159784D005FAB48 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,7 +131,7 @@
 		89E78F8B2150140600584489 /* TrainMe */ = {
 			isa = PBXGroup;
 			children = (
-				891763AA2153F33B00274B37 /* foods_recipe */,
+				8913EEE9216CA6B6007DDD53 /* foods_recipe */,
 				899957B32152E71D00451B9A /* FoodsViewComtroller.swift */,
 				89D5ECED2155309100F1F827 /* TrainigsViewController.swift */,
 				89D5ECEB21552D1B00F1F827 /* TrainingCollectionViewCell.swift */,
@@ -301,16 +275,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				891763B22153F50F00274B37 /* zharenyy_fenhel.txt in Resources */,
-				891763AE2153F3CF00274B37 /* syrnyy_kartofel.txt in Resources */,
 				89E78F992150140700584489 /* LaunchScreen.storyboard in Resources */,
 				89E78F962150140700584489 /* Assets.xcassets in Resources */,
-				891763B42153F59700274B37 /* gorohovyy_sup.txt in Resources */,
-				8910924C215AC54900989682 /* lepeshki_iz_kartofelya_i_chechevicy.txt in Resources */,
+				8913EEEA216CA6B6007DDD53 /* foods_recipe in Resources */,
 				89E78F942150140700584489 /* Main.storyboard in Resources */,
-				891763B02153F47600274B37 /* oladi_iz_kabachkov.txt in Resources */,
-				891763AC2153F35F00274B37 /* tako_salsa-verde.txt in Resources */,
-				8910924B215AC54900989682 /* steyki_iz_cvetnoy_kapusty.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

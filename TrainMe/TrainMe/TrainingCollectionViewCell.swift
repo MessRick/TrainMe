@@ -9,7 +9,20 @@
 import UIKit
 
 class TrainingCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var NameLabel: UILabel!
-    @IBOutlet weak var trainingImage: UIImageView!
     
+    
+    @IBOutlet weak var NameLabel: UILabel!
+    override func awakeFromNib() {
+        self.layer.cornerRadius = 10
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 2, height: 2)
+        self.layer.shadowOpacity = 0.2
+        self.layer.shadowRadius = 4.0
+        self.layer.masksToBounds = false
+        self.layer.borderColor = UIColor.brown.cgColor
+//        borderView.layer.borderWidth = 3.0
+//        borderView.layer.borderColor = UIColor.brown.cgColor
+        self.layer.borderWidth = 2.0
+    
+    }
 }

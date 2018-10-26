@@ -39,11 +39,18 @@ class FirstViewController: UIViewController, UICollectionViewDataSource, UIColle
         
         TrainingsCollectionViewController.dataSource = self
         TrainingsCollectionViewController.delegate = self
+
         
         let layout = self.TrainingsCollectionViewController.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.sectionInset = UIEdgeInsets.init(top: 20, left: 70, bottom: 20, right: 70)
+        layout.sectionInset = UIEdgeInsets.init(top: 20, left: 20, bottom: 20, right: 20)
         layout.minimumInteritemSpacing = 10
         layout.minimumLineSpacing = 20
+        
+        let width = TrainingsCollectionViewController.frame.width-50
+        let height = CGFloat(114)
+        let cellSize = CGSize(width: width, height: height)
+        layout.itemSize = cellSize
+        
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -52,6 +59,8 @@ class FirstViewController: UIViewController, UICollectionViewDataSource, UIColle
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return simpleTrainigs.count
     }
@@ -59,21 +68,17 @@ class FirstViewController: UIViewController, UICollectionViewDataSource, UIColle
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let newcell = collectionView.dequeueReusableCell(withReuseIdentifier: "FirstCell", for: indexPath) as! TrainingCollectionViewCell
-        
-        
         newcell.NameLabel.text = simpleTrainigs[indexPath.item]
-        newcell.layer.cornerRadius = 10
-        newcell.layer.shadowColor = UIColor.black.cgColor
-        newcell.layer.shadowOffset = CGSize(width: 2, height: 2)
-        newcell.layer.shadowOpacity = 0.2
-        newcell.layer.shadowRadius = 4.0
-        newcell.layer.masksToBounds = false
-        newcell.trainingImage.image = UIImage(named: imagesForTypesOfPlaces[typesOfPlaces[indexPath.item]])
-        newcell.trainingImage.contentMode = .scaleToFill
-        newcell.trainingImage.layer.cornerRadius = 10
-        newcell.trainingImage.layer.masksToBounds = true
+        let gradient = CAGradientLayer()
+        gradient.frame =  CGRect(origin: CGPoint.zero, size: newcell.frame.size)
+        gradient.colors = [UIColor.red.cgColor, UIColor.yellow.cgColor]
+        gradient.cornerRadius = 10
+       // gradient.borderColor = [UIColor.blue.cgColor, UIColor.green.cgColor]
+        newcell.layer.insertSublayer(gradient, at: 0)
         return newcell
     }
+    
+
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         trainingIndexNow = indexPath.item
