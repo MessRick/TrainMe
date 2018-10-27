@@ -71,7 +71,7 @@ class TrainigsViewController: UIViewController {
         TimerLabel.text = "\(setTime)"
         }
     }
-    
+   
     func createGradientLayer(for view: UIView) {
         let gradientLayer: CAGradientLayer
         gradientLayer = CAGradientLayer()

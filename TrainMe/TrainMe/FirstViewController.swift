@@ -168,6 +168,10 @@ class FirstViewController: UIViewController, UICollectionViewDataSource, UIColle
         TrainingsCollectionViewController.reloadData()
         refresher.endRefreshing()
     }
+    
+    @IBAction func unwindToTrainingCollectionViewViewController(segue: UIStoryboardSegue) {
+        print("Unwind to Root View Controller")
+    }
  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TrainingsSegue" {

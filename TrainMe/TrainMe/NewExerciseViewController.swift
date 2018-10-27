@@ -10,7 +10,7 @@ import UIKit
 
 class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
-
+    
     @IBOutlet weak var SaveButton: UIButton!
     @IBOutlet weak var GradientLine: UIView!
     @IBOutlet weak var ExerciseNameTextField: UITextField!
@@ -18,7 +18,18 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
     @IBOutlet weak var MinutesTextField: UITextField!
     @IBOutlet weak var SecondsTextField: UITextField!
     
- 
+    @IBAction func SavingExercise(_ sender: UIButton) {
+        nameString = ExerciseNameTextField.text
+        let hours = Int(HoursTextField.text!)!
+        let minutes = Int(MinutesTextField.text!)!
+        var seconds = Int(SecondsTextField.text!)!
+        seconds = minutes*60 + hours*1200
+        timeString = String(seconds)
+    }
+    
+    
+    var timeString: String?
+    var nameString: String?
     
     let SecAndMin = [["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23"],["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59"],["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59"]]
    // let hours = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23"]
@@ -30,6 +41,7 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
 
         createGradientLayer(for: GradientLine)
         createSecondPicker()
+        createToolbar()
         
         SaveButton.layer.cornerRadius = SaveButton.frame.width/2
         SaveButton.layer.shadowColor = UIColor.black.cgColor
@@ -46,11 +58,35 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
     func createSecondPicker(){
         let TimePicker = UIPickerView()
         TimePicker.delegate = self
+        TimePicker.backgroundColor = .white
+     
         
         MinutesTextField.inputView = TimePicker
         HoursTextField.inputView = TimePicker
         SecondsTextField.inputView = TimePicker
 
+    }
+    
+    func createToolbar(){
+        
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done",style: .plain, target: self, action: #selector(NewExerciseViewController.dissmissKeyboard))
+        
+        toolbar.setItems([doneButton], animated: false)
+        toolbar.isUserInteractionEnabled = true
+        
+        toolbar.barTintColor =  .white
+        //toolbar.barTintColor =  .lightGray
+    
+        MinutesTextField.inputAccessoryView = toolbar
+        SecondsTextField.inputAccessoryView = toolbar
+        HoursTextField.inputAccessoryView = toolbar
+    }
+    
+    @objc func dissmissKeyboard(){
+        view.endEditing(true)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -71,6 +107,25 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
         SecondsTextField.text = selectedTime[2]
         MinutesTextField.text = selectedTime[1]
         HoursTextField.text = selectedTime[0]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        
+        var label: UILabel
+        
+        if let view = view as? UILabel {
+            label = view
+        } else {
+            label = UILabel()
+        }
+        
+       // label.textColor = .bla
+        label.textAlignment = .center
+        label.font = UIFont(name: "AvenirNext-Medium",size: 22)
+        
+        label.text = SecAndMin[component][row]
+        
+        return label
     }
     
     func createGradientLayer(for view: UIView) {
@@ -103,5 +158,16 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
         // Pass the selected object to the new view controller.
     }
     */
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "unwindToNewTrainingViewController" {
+//            let recieverVC = segue.destination as! newTrainingViewController
+//                recieverVC.oneName = nameString!
+//            print("\n\n \(nameString!)")
+//                //recieverVC.exercisesNames += (nameString! + ",")
+//
+//        } else {
+//        }
+   // }
 
 }

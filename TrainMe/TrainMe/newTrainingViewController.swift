@@ -17,12 +17,12 @@ class newTrainingViewController: UIViewController {
     var newSimpleTrainigs:[String] = []
     var exercisesNames:String = ""
     var exercisesTimes:String = ""
+    var oneName: String = ""
+    var oneTime: String = ""
     var typeOfPlace: Int = 0
     
     @IBOutlet weak var newTrainingButtonSelf: UIButton!
     @IBOutlet weak var newTrainingName: UITextField!
-    @IBOutlet weak var exerciseName: UITextField!
-    @IBOutlet weak var exerciseTime: UITextField!
     @IBOutlet weak var exerciseAddButtonSelf: UIButton!
     @IBOutlet weak var placeSegmentControl: UISegmentedControl!
     
@@ -79,16 +79,16 @@ class newTrainingViewController: UIViewController {
         if(name?.isEmpty)!{
             print("name is empty")
             let alertController = UIAlertController(title: "Name is empty", message: "Please enter a name of training", preferredStyle: .alert)
-            
+
             self.present(alertController, animated: true, completion:nil)
-            
-            
+
+
             let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
                 print("You've pressed OK button");
             }
             alertController.addAction(OKAction)
         } else {
-            
+        
             
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             .appendingPathComponent("trainings1.1.sqlite")
@@ -166,7 +166,21 @@ class newTrainingViewController: UIViewController {
         
         alertController.addAction(OKAction)
         }
+    
+    }
+    
+    @IBAction func unwindToNewTrainingViewController(segue: UIStoryboardSegue) {
         
+        if let sourceViewController = segue.source as? NewExerciseViewController {
+            oneName = sourceViewController.ExerciseNameTextField.text!
+            oneTime += String(Int(sourceViewController.HoursTextField.text!)!*1200)
+            oneTime = String(Int(oneTime)! + Int(sourceViewController.MinutesTextField.text!)!*60)
+            oneTime = String(Int(oneTime)! + Int(sourceViewController.SecondsTextField.text!)!)
+        
+            print("\n\n Is Done \(oneName)\n  \(oneTime)\n")
+        }
+        exercisesNames.append(oneName+",")
+        exercisesTimes.append(oneTime+",")
     }
     
     var db: OpaquePointer?

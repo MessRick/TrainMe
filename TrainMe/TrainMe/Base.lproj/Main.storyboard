@@ -53,6 +53,7 @@
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="newTrainigButton:" destination="7ao-xY-8El" eventType="touchUpInside" id="vnm-Vz-Evt"/>
+                                    <segue destination="S4P-Od-JRn" kind="unwind" identifier="" unwindAction="unwindToTrainingCollectionViewViewControllerWithSegue:" id="qu6-Ls-xSu"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="guz-YY-uxn">
@@ -96,6 +97,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JIZ-ZI-RUE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="S4P-Od-JRn" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3469.5999999999999" y="-155.17241379310346"/>
         </scene>
@@ -162,6 +164,7 @@
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="newTrainigButton:" destination="7ao-xY-8El" eventType="touchUpInside" id="KVp-CZ-pdP"/>
+                                    <segue destination="Gyn-b0-k0H" kind="unwind" identifier="unwindToNewTrainingViewController" unwindAction="unwindToNewTrainingViewControllerWithSegue:" id="vM8-VJ-i7y"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -285,19 +288,11 @@
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <navigationItem key="navigationItem" title="Trainings" id="VDn-9c-tvW">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="4Tc-1I-bMh">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ju8-uW-nsd">
-                                <rect key="frame" x="329" y="0.0" width="30" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <color key="tintColor" red="0.20966607900000001" green="1" blue="0.13290442659999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="+">
-                                    <color key="titleColor" red="0.20966607900000001" green="1" blue="0.13290442659999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="newTreaningButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="B1D-7B-Bo7"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="4Tc-1I-bMh">
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="newTreaningButton:" destination="9pv-A4-QxB" id="ace-IT-ffJ"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>

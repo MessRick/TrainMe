@@ -2,4 +2,84 @@
 <Bucket
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TrainMe/newTrainingViewController.swift"
+            timestampString = "562369537.096788"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "newTrainingViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TrainMe.newTrainingViewController.exercisesNames.getter : Swift.String"
+                  moduleName = "TrainMe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/topuser/Desktop/Coacher/TrainMe/TrainMe/newTrainingViewController.swift"
+                  timestampString = "562366246.540105"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "123">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TrainMe.newTrainingViewController.exercisesNames.setter : Swift.String"
+                  moduleName = "TrainMe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/topuser/Desktop/Coacher/TrainMe/TrainMe/newTrainingViewController.swift"
+                  timestampString = "562366246.542155"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "137">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TrainMe.newTrainingViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; TrainMe.newTrainingViewController"
+                  moduleName = "TrainMe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/topuser/Desktop/Coacher/TrainMe/TrainMe/newTrainingViewController.swift"
+                  timestampString = "562366246.544116"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "545">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TrainMe.newTrainingViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;TrainMe.newTrainingViewController&gt;"
+                  moduleName = "TrainMe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/topuser/Desktop/Coacher/TrainMe/TrainMe/newTrainingViewController.swift"
+                  timestampString = "562366246.54708"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "523">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
