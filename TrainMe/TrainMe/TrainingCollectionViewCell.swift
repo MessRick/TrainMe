@@ -10,6 +10,7 @@ import UIKit
 
 class TrainingCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var conditionLabel: UILabel!
     
     @IBOutlet weak var NameLabel: UILabel!
     override func awakeFromNib() {
@@ -19,10 +20,10 @@ class TrainingCollectionViewCell: UICollectionViewCell {
         self.layer.shadowOpacity = 0.2
         self.layer.shadowRadius = 4.0
         self.layer.masksToBounds = false
-        self.layer.borderColor = UIColor.brown.cgColor
+       // self.layer.borderColor = UIColor.brown.cgColor
 //        borderView.layer.borderWidth = 3.0
 //        borderView.layer.borderColor = UIColor.brown.cgColor
-        self.layer.borderWidth = 2.0
+        //self.layer.borderWidth = 2.0
     
     }
 }

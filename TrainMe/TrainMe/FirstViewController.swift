@@ -69,12 +69,23 @@ class FirstViewController: UIViewController, UICollectionViewDataSource, UIColle
         
         let newcell = collectionView.dequeueReusableCell(withReuseIdentifier: "FirstCell", for: indexPath) as! TrainingCollectionViewCell
         newcell.NameLabel.text = simpleTrainigs[indexPath.item]
-        let gradient = CAGradientLayer()
-        gradient.frame =  CGRect(origin: CGPoint.zero, size: newcell.frame.size)
-        gradient.colors = [UIColor.red.cgColor, UIColor.yellow.cgColor]
-        gradient.cornerRadius = 10
-       // gradient.borderColor = [UIColor.blue.cgColor, UIColor.green.cgColor]
-        newcell.layer.insertSublayer(gradient, at: 0)
+        
+        switch typesOfPlaces[indexPath.item] {
+        case 1:
+            newcell.conditionLabel.text = "gym"
+        case 2:
+            newcell.conditionLabel.text = "outside"
+        default:
+            newcell.conditionLabel.text = "home"
+        }
+        //newcell.conditionLabel.text =
+        
+//        let gradient = CAGradientLayer()
+//        gradient.frame =  CGRect(origin: CGPoint.zero, size: newcell.frame.size)
+//        gradient.colors = [UIColor.red.cgColor, UIColor.yellow.cgColor]
+//        gradient.cornerRadius = 10
+//       // gradient.borderColor = [UIColor.blue.cgColor, UIColor.green.cgColor]
+//        newcell.layer.insertSublayer(gradient, at: 0)
         return newcell
     }
     
@@ -167,7 +178,16 @@ class FirstViewController: UIViewController, UICollectionViewDataSource, UIColle
         } else {
         }
     }
-
+    
+    func createGradientLayer(for view: UIView) {
+        let gradientLayer: CAGradientLayer
+        gradientLayer = CAGradientLayer()
+        gradientLayer.frame = view.bounds
+        gradientLayer.colors = [UIColor(red:0, green:0.49, blue: 1.0, alpha: 1).cgColor, UIColor(red:0.58, green:0.75, blue:1, alpha: 1).cgColor,UIColor(red:0, green:0.49, blue: 1.0, alpha: 1).cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0,y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1,y: 0.5)
+        view.layer.addSublayer(gradientLayer)
+    }
 
 }
 

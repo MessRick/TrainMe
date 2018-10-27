@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		890F8E7F2184A8C6001E2CED /* NewExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890F8E7E2184A8C6001E2CED /* NewExerciseViewController.swift */; };
 		8910924E215B04AF00989682 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8910924D215B04AE00989682 /* libsqlite3.0.tbd */; };
 		8913EEEA216CA6B6007DDD53 /* foods_recipe in Resources */ = {isa = PBXBuildFile; fileRef = 8913EEE9216CA6B6007DDD53 /* foods_recipe */; };
 		891763B62155225300274B37 /* TrainigsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891763B52155225300274B37 /* TrainigsClass.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		890F8E7E2184A8C6001E2CED /* NewExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExerciseViewController.swift; sourceTree = "<group>"; };
 		8910924D215B04AE00989682 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		8913EEE9216CA6B6007DDD53 /* foods_recipe */ = {isa = PBXFileReference; lastKnownFileType = folder; path = foods_recipe; sourceTree = "<group>"; };
 		891763B52155225300274B37 /* TrainigsClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainigsClass.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				891763B52155225300274B37 /* TrainigsClass.swift */,
 				89E78F902150140700584489 /* SecondViewController.swift */,
 				89E78F922150140700584489 /* Main.storyboard */,
+				890F8E7E2184A8C6001E2CED /* NewExerciseViewController.swift */,
 				89D67CAC2159140C005FAB48 /* newTrainingViewController.swift */,
 				89B1DBB42152AD3B00987BF8 /* CollectionViewCell.swift */,
 				89E78F952150140700584489 /* Assets.xcassets */,
@@ -313,6 +316,7 @@
 				891763B62155225300274B37 /* TrainigsClass.swift in Sources */,
 				899957B42152E71D00451B9A /* FoodsViewComtroller.swift in Sources */,
 				89D67CAD2159140C005FAB48 /* newTrainingViewController.swift in Sources */,
+				890F8E7F2184A8C6001E2CED /* NewExerciseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

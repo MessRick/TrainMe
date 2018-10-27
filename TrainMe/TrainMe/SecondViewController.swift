@@ -18,7 +18,7 @@ class SecondViewController: UIViewController,UICollectionViewDataSource,UICollec
     
     let imagesName = ["tako_salsa-verde_2","syrnyy_kartofel_3","oladi_iz_kabachkov_2","zharenyy_fenhel_2","gorohovyy_sup_2","lepeshki_iz_kartofelya_i_chechevicy_2","steyki_iz_cvetnoy_kapusty_2"]
     
-    let filePaths = ["tako_salsa-verde","syrnyy_kartofel","oladi_iz_kabachkov","zharenyy_fenhel","gorohovyy_sup","lepeshki_iz_kartofelya_i_chechevicy","steyki_iz_cvetnoy_kapusty"]
+    let filePaths = ["foods_recipe/tako_salsa-verde","foods_recipe/syrnyy_kartofel","foods_recipe/oladi_iz_kabachkov","foods_recipe/zharenyy_fenhel","foods_recipe/gorohovyy_sup","foods_recipe/lepeshki_iz_kartofelya_i_chechevicy","foods_recipe/steyki_iz_cvetnoy_kapusty"]
     
     
     override func viewDidLoad() {
@@ -68,11 +68,14 @@ class SecondViewController: UIViewController,UICollectionViewDataSource,UICollec
         let recieverVC = segue.destination as! FoodsViewComtroller
         recieverVC.imageForView = UIImage(named: imagesName[indexNow])
         recieverVC.foodName = namesOfDiches[indexNow]
-        let niceFile = Bundle.main.path(forResource:filePaths[indexNow] , ofType: "txt")
+        if let niceFile = Bundle.main.path(forResource: filePaths[indexNow] , ofType: "txt"){
         do{
-            recieverVC.labelText = try String(contentsOfFile: niceFile!, encoding: String.Encoding.utf8)
+            recieverVC.labelText = try String(contentsOfFile: niceFile, encoding: String.Encoding.utf8)
         } catch {
             print("failed")
+        }
+        } else {
+            print("cannot open that file")
         }
         
     }

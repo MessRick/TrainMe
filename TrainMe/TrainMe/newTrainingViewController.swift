@@ -40,37 +40,37 @@ class newTrainingViewController: UIViewController {
     
     @IBAction func exerciseAddButton(_ sender: UIButton) {
         
-        let name = exerciseName.text!
-        let time = exerciseTime.text!
-        if(name.isEmpty){
-            print("name is empty")
-            let alertController = UIAlertController(title: "Name is empty", message: "Please enter a name of exercise", preferredStyle: .alert)
-            
-            self.present(alertController, animated: true, completion:nil)
-            
-            
-            let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
-                print("You've pressed OK button");
-            }
-            alertController.addAction(OKAction)
-        } else
-        if(time.isEmpty){
-            let alertController = UIAlertController(title: "TimeField is empty", message: "Please enter a time of exercise", preferredStyle: .alert)
-            
-            self.present(alertController, animated: true, completion:nil)
-            
-            
-            let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
-                print("You've pressed OK button");
-            }
-            alertController.addAction(OKAction)
-            print("time is empty")
-        } else {
-        exercisesNames.append(name+",")
-        exercisesTimes.append(time+",")
-        exerciseTime.text?.removeAll()
-        exerciseName.text?.removeAll()
-        }
+//        let name = exerciseName.text!
+//        let time = exerciseTime.text!
+//        if(name.isEmpty){
+//            print("name is empty")
+//            let alertController = UIAlertController(title: "Name is empty", message: "Please enter a name of exercise", preferredStyle: .alert)
+//            
+//            self.present(alertController, animated: true, completion:nil)
+//            
+//            
+//            let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+//                print("You've pressed OK button");
+//            }
+//            alertController.addAction(OKAction)
+//        } else
+//        if(time.isEmpty){
+//            let alertController = UIAlertController(title: "TimeField is empty", message: "Please enter a time of exercise", preferredStyle: .alert)
+//            
+//            self.present(alertController, animated: true, completion:nil)
+//            
+//            
+//            let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+//                print("You've pressed OK button");
+//            }
+//            alertController.addAction(OKAction)
+//            print("time is empty")
+//        } else {
+//        exercisesNames.append(name+",")
+//        exercisesTimes.append(time+",")
+//        exerciseTime.text?.removeAll()
+//        exerciseName.text?.removeAll()
+//        }
     }
     
     
@@ -173,16 +173,16 @@ class newTrainingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        newTrainingButtonSelf.layer.cornerRadius = 10
+        newTrainingButtonSelf.layer.cornerRadius = newTrainingButtonSelf.frame.width/2
         newTrainingButtonSelf.layer.shadowColor = UIColor.black.cgColor
-        newTrainingButtonSelf.layer.shadowOffset = CGSize(width: 2, height: 2)
-        newTrainingButtonSelf.layer.shadowOpacity = 0.2
+        newTrainingButtonSelf.layer.shadowOffset = CGSize(width: 1, height: 2)
+        newTrainingButtonSelf.layer.shadowOpacity = 0.3
         newTrainingButtonSelf.layer.shadowRadius = 4.0
         newTrainingButtonSelf.layer.masksToBounds = false
         exerciseAddButtonSelf.layer.cornerRadius = 10
         exerciseAddButtonSelf.layer.shadowColor = UIColor.black.cgColor
-        exerciseAddButtonSelf.layer.shadowOffset = CGSize(width: 2, height: 2)
-        exerciseAddButtonSelf.layer.shadowOpacity = 0.2
+        exerciseAddButtonSelf.layer.shadowOffset = CGSize(width: 1, height: 2)
+        exerciseAddButtonSelf.layer.shadowOpacity = 0.3
         exerciseAddButtonSelf.layer.shadowRadius = 4.0
         exerciseAddButtonSelf.layer.masksToBounds = false
         // Do any additional setup after loading the view.
