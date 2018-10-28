@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVFoundation
+import AudioToolbox
 
 class TrainigsViewController: UIViewController {
     
@@ -15,7 +17,9 @@ class TrainigsViewController: UIViewController {
     var exerciseTimeDefaulte: String = ""
     var exerciseName:[String] = []
     var timerSec:[String] = []
-    var setTime: Int = 0
+    var HousTime: Int = 0
+    var MinutesTime: Int = 0
+    var SecondsTime: Int = 0
     var timer = Timer()
     var i = 0
 
@@ -27,7 +31,9 @@ class TrainigsViewController: UIViewController {
     
     @IBAction func StartButton(_ sender: UIButton) {
         timer.invalidate()
-        setTime = Int(timerSec[i])!
+        HousTime = Int(timerSec[i])!/1200
+        MinutesTime = (Int(timerSec[i])!%1200)/60
+        SecondsTime = ((Int(timerSec[i])!%1200)%60)
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
         
     }
@@ -43,7 +49,7 @@ class TrainigsViewController: UIViewController {
         timerSec.removeLast()
         
         ExerciseNameLabel.text = exerciseName[0]
-        TimerLabel.text = timerSec[0]
+        TimerLabel.text = "\(Int(timerSec[i])!/1200):\((Int(timerSec[i])!%1200)/60):\(((Int(timerSec[i])!%1200)%60))"
         
         createGradientLayer(for: LineAfterNameOfTraining)
         StartButtonSelf.layer.cornerRadius = StartButtonSelf.frame.width/2
@@ -55,22 +61,48 @@ class TrainigsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     @objc func timerAction() {
-        if setTime == 0 && i+1 < exerciseName.count{
+        
+        if SecondsTime == 0 && MinutesTime == 0 && HousTime == 0 && i+1 < exerciseName.count{
+            
+            AudioServicesPlaySystemSound(SystemSoundID(1308))
+            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             i+=1
-            setTime = Int(timerSec[i])!
+            HousTime = 0
+            MinutesTime = 0
+            SecondsTime = 0
+            HousTime = Int(timerSec[i])!/1200
+            MinutesTime = (Int(timerSec[i])!%1200)/60
+            SecondsTime = ((Int(timerSec[i])!%1200)%60)
             ExerciseNameLabel.text = exerciseName[i]
             TimerLabel.text = timerSec[i]
-        } else if i+1 == exerciseName.count && setTime == 0{
+        } else if i+1 == exerciseName.count && SecondsTime == 0 && MinutesTime == 0 && HousTime == 0{
+            AudioServicesPlaySystemSound(SystemSoundID(1330))
+            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             timer.invalidate()
             i = 0
-            setTime = Int(timerSec[i])!
+            HousTime = Int(timerSec[i])!/1200
+            MinutesTime = (Int(timerSec[i])!%1200)/60
+            SecondsTime = ((Int(timerSec[i])!%1200)%60)
             ExerciseNameLabel.text = exerciseName[i]
             TimerLabel.text = timerSec[i]
+            
+        } else if SecondsTime == 0 {
+            if(MinutesTime>0){
+                SecondsTime = 59
+                MinutesTime -= 1
+            } else if (HousTime>0){
+                MinutesTime = 59
+                SecondsTime = 59
+                HousTime -= 1
+            }
+            TimerLabel.text = "\(HousTime):\(MinutesTime):\(SecondsTime)"
+            
         } else {
-        setTime-=1
-        TimerLabel.text = "\(setTime)"
+        SecondsTime -= 1
+            TimerLabel.text = "\(HousTime):\(MinutesTime):\(SecondsTime)"
         }
     }
+    
    
     func createGradientLayer(for view: UIView) {
         let gradientLayer: CAGradientLayer

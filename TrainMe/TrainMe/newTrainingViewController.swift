@@ -173,7 +173,7 @@ class newTrainingViewController: UIViewController {
         
         if let sourceViewController = segue.source as? NewExerciseViewController {
             oneName = sourceViewController.ExerciseNameTextField.text!
-            oneTime += String(Int(sourceViewController.HoursTextField.text!)!*1200)
+            oneTime = String(Int(sourceViewController.HoursTextField.text!)!*1200)
             oneTime = String(Int(oneTime)! + Int(sourceViewController.MinutesTextField.text!)!*60)
             oneTime = String(Int(oneTime)! + Int(sourceViewController.SecondsTextField.text!)!)
         
