@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import AudioToolbox
+import SQLite3
 
 class TrainigsViewController: UIViewController {
     
@@ -25,12 +26,37 @@ class TrainigsViewController: UIViewController {
     var seconds = ""
     var timer = Timer()
     var i = 0
+    var isTrainingEditing = false
+    var colotNow: UIColor?
+    var indexItem: Int?
 
+    @IBOutlet weak var EditButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var LineAfterNameOfTraining: UIView!
     @IBOutlet weak var TrainingNameLabel: UILabel!
     @IBOutlet weak var ExerciseNameLabel: UILabel!
     @IBOutlet weak var TimerLabel: UILabel!
     @IBOutlet weak var StartButtonSelf: UIButton!
+    
+    @IBAction func EditingAction(_ sender: UIButton) {
+        isTrainingEditing = !isTrainingEditing
+        
+        if(isTrainingEditing){
+            deleteButton.isHidden = false
+            EditButton.setTitle("done", for: .normal)
+            
+        } else {
+            deleteButton.isHidden = true
+            EditButton.setTitle("edit", for: .normal)
+        }
+        
+    }
+    
+    @IBAction func deleteAction(_ sender: UIButton) {
+      
+    }
+    
+  
     
     @IBAction func StartButton(_ sender: UIButton) {
         timer.invalidate()
@@ -61,6 +87,22 @@ class TrainigsViewController: UIViewController {
         StartButtonSelf.layer.shadowOpacity = 0.3
         StartButtonSelf.layer.shadowRadius = 4.0
         StartButtonSelf.layer.masksToBounds = false
+        
+       // EditButton.titleLabel?.text = "edit"
+        EditButton.layer.cornerRadius = EditButton.frame.height/2
+        EditButton.layer.shadowColor = UIColor.black.cgColor
+        EditButton.layer.shadowOffset = CGSize(width: 1, height: 2)
+        EditButton.layer.shadowOpacity = 0.3
+        EditButton.layer.shadowRadius = 4.0
+        EditButton.layer.masksToBounds = false
+        
+        deleteButton.isHidden = true
+        deleteButton.layer.cornerRadius = deleteButton.frame.height/2
+        deleteButton.layer.shadowColor = UIColor.black.cgColor
+        deleteButton.layer.shadowOffset = CGSize(width: 1, height: 2)
+        deleteButton.layer.shadowOpacity = 0.3
+        deleteButton.layer.shadowRadius = 4.0
+        deleteButton.layer.masksToBounds = false
         // Do any additional setup after loading the view.
     }
     @objc func timerAction() {

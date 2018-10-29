@@ -16,6 +16,7 @@ class FirstViewController: UIViewController, UICollectionViewDataSource, UIColle
     var simpleTrainigs:[String] = []
     var exercisesNamesString:[String] = []
     var exercisesTimesString:[String] = []
+    var trainigsId:[Int] = []
    // var refresher: UIRefreshControl!
     var typesOfPlaces:[Int] = []
     var imagesForTypesOfPlaces = ["gym","outcide","home"]
@@ -112,6 +113,7 @@ class FirstViewController: UIViewController, UICollectionViewDataSource, UIColle
         }
         while sqlite3_step(statement) == SQLITE_ROW {
             let id = sqlite3_column_int64(statement, 0)
+            trainigsId.append(Int(id))
             print("id = \(id); ", terminator: "")
             
             if let cString = sqlite3_column_text(statement, 1) {
@@ -158,22 +160,42 @@ class FirstViewController: UIViewController, UICollectionViewDataSource, UIColle
         db = nil
     }
     
-    @objc func populate()
-    {
-        simpleTrainigs = []
-        exercisesTimesString = []
-        exercisesNamesString = []
-        typesOfPlaces = []
+//    @objc func populate()
+//    {
+//        simpleTrainigs = []
+//        exercisesTimesString = []
+//        exercisesNamesString = []
+//        typesOfPlaces = []
+//        loadDataFromDatabase()
+//        TrainingsCollectionViewController.reloadData()
+//        //refresher.endRefreshing()
+//    }
+//    
+    @IBAction func unwindToTrainingCollectionViewViewController(segue: UIStoryboardSegue) {
+        clearAll()
         loadDataFromDatabase()
         TrainingsCollectionViewController.reloadData()
-        refresher.endRefreshing()
     }
     
-    @IBAction func unwindToTrainingCollectionViewViewController(segue: UIStoryboardSegue) {
+    func clearAll(){
         simpleTrainigs = []
         exercisesTimesString = []
         exercisesNamesString = []
         typesOfPlaces = []
+        trainigsId = []
+    }
+    
+    @IBAction func unwindToTrainingCollectionViewDeletedCell(segue: UIStoryboardSegue) {
+        print("\n\nYES Segue\n\n")
+        var id: Int?
+        if let sourceViewController = segue.source as? TrainigsViewController {
+            id = sourceViewController.indexItem!
+        }
+         print("\n\nYES ID\n\n")
+         print("\n\n id = \(id!) \n\n")
+        delete(id!)
+         print("\n\nYES Delete\n\n")
+        clearAll()
         loadDataFromDatabase()
         TrainingsCollectionViewController.reloadData()
     }
@@ -184,6 +206,7 @@ class FirstViewController: UIViewController, UICollectionViewDataSource, UIColle
             recieverVC.labelName = simpleTrainigs[trainingIndexNow]
             recieverVC.exerciseNameDefaulte = exercisesNamesString[trainingIndexNow]
             recieverVC.exerciseTimeDefaulte = exercisesTimesString[trainingIndexNow]
+            recieverVC.indexItem = trainigsId[trainingIndexNow]
         } else {
         }
     }
@@ -197,6 +220,38 @@ class FirstViewController: UIViewController, UICollectionViewDataSource, UIColle
         gradientLayer.endPoint = CGPoint(x: 1,y: 0.5)
         view.layer.addSublayer(gradientLayer)
     }
+    
+    func delete(_ id: Int) {
+        
+        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            .appendingPathComponent("trainings1.2.sqlite")
+        
+        // open database
+        
+        var db: OpaquePointer?
+        if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
+            print("error opening database")
+        }
+        
+        var deleteStatement: OpaquePointer? = nil
+        
+        print("\n\n id = \(id) \n\n")
+        
+        let deleteStatementStirng = "DELETE FROM test WHERE Id = \(id);"
+        
+        if sqlite3_prepare_v2(db, deleteStatementStirng, -1, &deleteStatement, nil) == SQLITE_OK {
+            if sqlite3_step(deleteStatement) == SQLITE_DONE {
+                print("Successfully deleted row.")
+            } else {
+                print("Could not delete row.")
+            }
+        } else {
+            print("DELETE statement could not be prepared")
+        }
+        
+        sqlite3_finalize(deleteStatement)
+    }
+    
 
 }
 

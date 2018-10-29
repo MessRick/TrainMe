@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
     
     
     @IBOutlet weak var SaveButton: UIButton!
@@ -42,6 +42,8 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
         createGradientLayer(for: GradientLine)
         createSecondPicker()
         createToolbar()
+        
+        self.ExerciseNameTextField.delegate = self
         
         SaveButton.layer.cornerRadius = SaveButton.frame.width/2
         SaveButton.layer.shadowColor = UIColor.black.cgColor
@@ -136,6 +138,15 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
         gradientLayer.startPoint = CGPoint(x: 0,y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 1,y: 0.5)
         view.layer.addSublayer(gradientLayer)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        ExerciseNameTextField.resignFirstResponder()
+        return(true)
     }
     
 //    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
