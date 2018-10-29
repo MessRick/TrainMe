@@ -178,17 +178,42 @@ class newTrainingViewController: UIViewController, UITableViewDataSource, UITabl
     @IBAction func unwindToNewTrainingViewController(segue: UIStoryboardSegue) {
         
         if let sourceViewController = segue.source as? NewExerciseViewController {
+            if(sourceViewController.ExerciseNameTextField.text!.isEmpty ){
+                
+                let alertController = UIAlertController(title: "Name is empty", message: "Please enter a name of exercise", preferredStyle: .alert)
+                
+                self.present(alertController, animated: true, completion:nil)
+                
+                
+                let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+                    print("You've pressed OK button");
+                }
+                alertController.addAction(OKAction)
+            } else if (sourceViewController.HoursTextField.text!.isEmpty){
+                let alertController = UIAlertController(title: "Time fields is empty", message: "Please enter a time for exercise", preferredStyle: .alert)
+                
+                self.present(alertController, animated: true, completion:nil)
+                
+                
+                let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+                    print("You've pressed OK button");
+                }
+                alertController.addAction(OKAction)
+            } else {
             oneName = sourceViewController.ExerciseNameTextField.text!
             oneTime = String(Int(sourceViewController.HoursTextField.text!)!*1200)
             oneTime = String(Int(oneTime)! + Int(sourceViewController.MinutesTextField.text!)!*60)
             oneTime = String(Int(oneTime)! + Int(sourceViewController.SecondsTextField.text!)!)
         
             print("\n\n Is Done \(oneName)\n  \(oneTime)\n")
+            exercisesNames.append(oneName+",")
+            exercisesTimes.append(oneTime+",")
+            exerciseName = exercisesNames.components(separatedBy: ",")
+            ExercisesTableView.reloadData()
+            }
         }
-        exercisesNames.append(oneName+",")
-        exercisesTimes.append(oneTime+",")
-        exerciseName = exercisesNames.components(separatedBy: ",")
-        ExercisesTableView.reloadData()
+    
+    
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -19,12 +19,7 @@ class NewExerciseViewController: UIViewController, UIPickerViewDataSource, UIPic
     @IBOutlet weak var SecondsTextField: UITextField!
     
     @IBAction func SavingExercise(_ sender: UIButton) {
-        nameString = ExerciseNameTextField.text
-        let hours = Int(HoursTextField.text!)!
-        let minutes = Int(MinutesTextField.text!)!
-        var seconds = Int(SecondsTextField.text!)!
-        seconds = minutes*60 + hours*1200
-        timeString = String(seconds)
+        
     }
     
     
