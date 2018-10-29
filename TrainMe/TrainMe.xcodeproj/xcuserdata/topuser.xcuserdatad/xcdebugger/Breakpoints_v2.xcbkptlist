@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TrainMe/newTrainingViewController.swift"
-            timestampString = "562443075.522429"
+            timestampString = "562506005.8516099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
             landmarkName = "newTrainingViewController"
             landmarkType = "3">
             <Locations>

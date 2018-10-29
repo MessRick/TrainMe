@@ -9,7 +9,9 @@
 import UIKit
 import SQLite3
 
-class newTrainingViewController: UIViewController {
+class newTrainingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+    
+    
     
     internal let SQLITE_STATIC = unsafeBitCast(0, to: sqlite3_destructor_type.self)
     internal let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
@@ -20,7 +22,9 @@ class newTrainingViewController: UIViewController {
     var oneName: String = ""
     var oneTime: String = ""
     var typeOfPlace: Int = 0
+    var exerciseName:[String] = []
     
+    @IBOutlet weak var ExercisesTableView: UITableView!
     @IBOutlet weak var newTrainingButtonSelf: UIButton!
     @IBOutlet weak var newTrainingName: UITextField!
     @IBOutlet weak var exerciseAddButtonSelf: UIButton!
@@ -37,6 +41,8 @@ class newTrainingViewController: UIViewController {
             typeOfPlace = 2;
         }
     }
+    
+    
     
     @IBAction func exerciseAddButton(_ sender: UIButton) {
         
@@ -91,7 +97,7 @@ class newTrainingViewController: UIViewController {
         
             
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            .appendingPathComponent("trainings1.1.sqlite")
+            .appendingPathComponent("trainings1.2.sqlite")
         
         // open database
         
@@ -155,16 +161,16 @@ class newTrainingViewController: UIViewController {
         exercisesTimes = ""
         newTrainingName.text?.removeAll()
         
-        let alertController = UIAlertController(title: "Saved", message: "Training was saved", preferredStyle: .alert)
-        
-        self.present(alertController, animated: true, completion:nil)
-        
-        
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
-            print("You've pressed OK button");
-        }
-        
-        alertController.addAction(OKAction)
+//        let alertController = UIAlertController(title: "Saved", message: "Training was saved", preferredStyle: .alert)
+//
+//        self.present(alertController, animated: true, completion:nil)
+//
+//
+//        let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+//            print("You've pressed OK button");
+//        }
+//
+//        alertController.addAction(OKAction)
         }
     
     }
@@ -181,12 +187,28 @@ class newTrainingViewController: UIViewController {
         }
         exercisesNames.append(oneName+",")
         exercisesTimes.append(oneTime+",")
+        exerciseName = exercisesNames.components(separatedBy: ",")
+        ExercisesTableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return exerciseName.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
+        cell.textLabel?.text = exerciseName[indexPath.row]
+        
+        return cell
     }
     
     var db: OpaquePointer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.newTrainingName.delegate = self
+        exerciseName = exercisesNames.components(separatedBy: ",")
         newTrainingButtonSelf.layer.cornerRadius = newTrainingButtonSelf.frame.width/2
         newTrainingButtonSelf.layer.shadowColor = UIColor.black.cgColor
         newTrainingButtonSelf.layer.shadowOffset = CGSize(width: 1, height: 2)
@@ -200,6 +222,15 @@ class newTrainingViewController: UIViewController {
         exerciseAddButtonSelf.layer.shadowRadius = 4.0
         exerciseAddButtonSelf.layer.masksToBounds = false
         // Do any additional setup after loading the view.
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return (true)
     }
 
 }

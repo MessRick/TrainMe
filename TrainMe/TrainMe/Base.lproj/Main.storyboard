@@ -29,7 +29,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1PG-gr-F3n">
-                                <rect key="frame" x="107.5" y="301" width="160" height="46"/>
+                                <rect key="frame" x="107.5" y="176" width="160" height="46"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="C2J-dO-XVe"/>
@@ -43,7 +43,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7b-ri-J2N">
-                                <rect key="frame" x="137.5" y="180" width="100" height="100"/>
+                                <rect key="frame" x="137.5" y="411" width="100" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="2EJ-7w-6xw"/>
@@ -53,14 +53,9 @@
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="newTrainigButton:" destination="7ao-xY-8El" eventType="touchUpInside" id="vnm-Vz-Evt"/>
-                                    <segue destination="S4P-Od-JRn" kind="unwind" identifier="" unwindAction="unwindToTrainingCollectionViewViewControllerWithSegue:" id="qu6-Ls-xSu"/>
+                                    <segue destination="S4P-Od-JRn" kind="unwind" unwindAction="unwindToTrainingCollectionViewViewControllerWithSegue:" id="mAm-Qv-aRE"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="guz-YY-uxn">
-                                <rect key="frame" x="16" y="394" width="343" height="224"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IDm-Gs-RDE">
                                 <rect key="frame" x="64" y="123" width="246" height="29"/>
                                 <segments>
@@ -72,24 +67,39 @@
                                     <action selector="placeForTraining:" destination="7ao-xY-8El" eventType="valueChanged" id="S3O-us-4Sy"/>
                                 </connections>
                             </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NAT-pJ-DDr">
+                                <rect key="frame" x="16" y="230" width="343" height="164"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="164" id="jOg-Uz-H3y"/>
+                                    <constraint firstAttribute="width" constant="343" id="ugZ-dB-Ndn"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="7ao-xY-8El" id="RzK-gL-ZBq"/>
+                                    <outlet property="delegate" destination="7ao-xY-8El" id="yZF-Ea-FhU"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="YVj-Wr-2sX" firstAttribute="top" secondItem="9yd-Kf-yYv" secondAttribute="top" constant="7" id="5zd-DM-GJY"/>
                             <constraint firstItem="IDm-Gs-RDE" firstAttribute="centerX" secondItem="1PG-gr-F3n" secondAttribute="centerX" id="Cpn-WH-kP4"/>
                             <constraint firstItem="IDm-Gs-RDE" firstAttribute="top" secondItem="YVj-Wr-2sX" secondAttribute="bottom" constant="22" id="L6j-oV-9L7"/>
-                            <constraint firstItem="f7b-ri-J2N" firstAttribute="top" secondItem="IDm-Gs-RDE" secondAttribute="bottom" constant="29" id="Vab-l4-1Fn"/>
                             <constraint firstItem="1PG-gr-F3n" firstAttribute="centerX" secondItem="9yd-Kf-yYv" secondAttribute="centerX" id="W4H-ir-Me7"/>
-                            <constraint firstItem="1PG-gr-F3n" firstAttribute="top" secondItem="f7b-ri-J2N" secondAttribute="bottom" constant="21" id="crt-66-MOE"/>
+                            <constraint firstItem="NAT-pJ-DDr" firstAttribute="centerX" secondItem="9yd-Kf-yYv" secondAttribute="centerX" id="f8m-PI-Xge"/>
                             <constraint firstItem="YVj-Wr-2sX" firstAttribute="trailing" secondItem="JAg-jm-Qpk" secondAttribute="trailingMargin" id="hfq-au-hrA"/>
                             <constraint firstItem="YVj-Wr-2sX" firstAttribute="leading" secondItem="JAg-jm-Qpk" secondAttribute="leadingMargin" id="kgA-KX-rrj"/>
                             <constraint firstItem="IDm-Gs-RDE" firstAttribute="centerX" secondItem="9yd-Kf-yYv" secondAttribute="centerX" id="ksg-tt-sOL"/>
+                            <constraint firstItem="1PG-gr-F3n" firstAttribute="top" secondItem="IDm-Gs-RDE" secondAttribute="bottom" constant="25" id="lkU-pf-prb"/>
+                            <constraint firstItem="f7b-ri-J2N" firstAttribute="centerX" secondItem="9yd-Kf-yYv" secondAttribute="centerX" id="mdY-cT-qBz"/>
                             <constraint firstItem="YVj-Wr-2sX" firstAttribute="centerX" secondItem="1PG-gr-F3n" secondAttribute="centerX" id="nBe-vl-uxf"/>
-                            <constraint firstItem="f7b-ri-J2N" firstAttribute="centerX" secondItem="1PG-gr-F3n" secondAttribute="centerX" id="oZN-wa-zbT"/>
+                            <constraint firstItem="f7b-ri-J2N" firstAttribute="top" secondItem="NAT-pJ-DDr" secondAttribute="bottom" constant="17" id="pkC-xm-Cpn"/>
+                            <constraint firstItem="NAT-pJ-DDr" firstAttribute="top" secondItem="1PG-gr-F3n" secondAttribute="bottom" constant="8" id="rjr-FX-GVu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9yd-Kf-yYv"/>
                     </view>
                     <connections>
+                        <outlet property="ExercisesTableView" destination="NAT-pJ-DDr" id="nhu-UR-hLz"/>
                         <outlet property="exerciseAddButtonSelf" destination="1PG-gr-F3n" id="D6N-Lz-53i"/>
                         <outlet property="newTrainingButtonSelf" destination="f7b-ri-J2N" id="Ahn-xX-SZM"/>
                         <outlet property="newTrainingName" destination="YVj-Wr-2sX" id="y69-SX-8Zd"/>

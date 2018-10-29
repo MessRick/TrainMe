@@ -20,6 +20,9 @@ class TrainigsViewController: UIViewController {
     var HousTime: Int = 0
     var MinutesTime: Int = 0
     var SecondsTime: Int = 0
+    var hours = ""
+    var minutes = ""
+    var seconds = ""
     var timer = Timer()
     var i = 0
 
@@ -95,6 +98,7 @@ class TrainigsViewController: UIViewController {
                 SecondsTime = 59
                 HousTime -= 1
             }
+            
             TimerLabel.text = "\(HousTime):\(MinutesTime):\(SecondsTime)"
             
         } else {

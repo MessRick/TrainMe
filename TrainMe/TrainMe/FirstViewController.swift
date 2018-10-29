@@ -16,7 +16,7 @@ class FirstViewController: UIViewController, UICollectionViewDataSource, UIColle
     var simpleTrainigs:[String] = []
     var exercisesNamesString:[String] = []
     var exercisesTimesString:[String] = []
-    var refresher: UIRefreshControl!
+   // var refresher: UIRefreshControl!
     var typesOfPlaces:[Int] = []
     var imagesForTypesOfPlaces = ["gym","outcide","home"]
     
@@ -31,9 +31,9 @@ class FirstViewController: UIViewController, UICollectionViewDataSource, UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        refresher = UIRefreshControl()
-        refresher.addTarget(self, action: #selector(FirstViewController.populate), for: UIControl.Event.valueChanged)
-        TrainingsCollectionViewController.addSubview(refresher)
+//        refresher = UIRefreshControl()
+//        refresher.addTarget(self, action: #selector(FirstViewController.populate), for: UIControl.Event.valueChanged)
+//        TrainingsCollectionViewController.addSubview(refresher)
         
         loadDataFromDatabase()
         
@@ -98,7 +98,7 @@ class FirstViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     func loadDataFromDatabase(){
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            .appendingPathComponent("trainings1.1.sqlite")
+            .appendingPathComponent("trainings1.2.sqlite")
         
         // open database
         var db: OpaquePointer?
@@ -170,7 +170,12 @@ class FirstViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
     
     @IBAction func unwindToTrainingCollectionViewViewController(segue: UIStoryboardSegue) {
-        print("Unwind to Root View Controller")
+        simpleTrainigs = []
+        exercisesTimesString = []
+        exercisesNamesString = []
+        typesOfPlaces = []
+        loadDataFromDatabase()
+        TrainingsCollectionViewController.reloadData()
     }
  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
