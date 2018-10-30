@@ -23,7 +23,10 @@ class newTrainingViewController: UIViewController, UITableViewDataSource, UITabl
     var oneTime: String = ""
     var typeOfPlace: Int = 0
     var exerciseName:[String] = []
+    var exerciseTime:[String] = []
+    var indexNow = 0
     
+    @IBOutlet weak var gradienLine: UIView!
     @IBOutlet weak var ExercisesTableView: UITableView!
     @IBOutlet weak var newTrainingButtonSelf: UIButton!
     @IBOutlet weak var newTrainingName: UITextField!
@@ -93,7 +96,18 @@ class newTrainingViewController: UIViewController, UITableViewDataSource, UITabl
                 print("You've pressed OK button");
             }
             alertController.addAction(OKAction)
-        } else {
+        } else if (exercisesNames.isEmpty){
+            print("name is empty")
+            let alertController = UIAlertController(title: "Have no exercises", message: "Please create any exercises", preferredStyle: .alert)
+            
+            self.present(alertController, animated: true, completion:nil)
+            
+            
+            let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+                print("You've pressed OK button");
+            }
+            alertController.addAction(OKAction)
+        }else {
         
             
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
@@ -209,6 +223,9 @@ class newTrainingViewController: UIViewController, UITableViewDataSource, UITabl
             exercisesNames.append(oneName+",")
             exercisesTimes.append(oneTime+",")
             exerciseName = exercisesNames.components(separatedBy: ",")
+            exerciseTime = exercisesTimes.components(separatedBy: ",")
+            exerciseName.removeLast()
+            exerciseTime.removeLast()
             ExercisesTableView.reloadData()
             }
         }
@@ -227,6 +244,38 @@ class newTrainingViewController: UIViewController, UITableViewDataSource, UITabl
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        indexNow = indexPath.item
+        performSegue(withIdentifier: "ExerciseSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ExerciseSegue" {
+            let recieverVC = segue.destination as! ExerciseViewController
+            
+            recieverVC.Name = exerciseName[indexNow]
+            recieverVC.Time = exerciseTime[indexNow]
+            recieverVC.indexOfExercise = indexNow
+            //recieverVC.ExerciseTime
+        } else {
+        }
+    }
+    
+    @IBAction func unwindToTrainingCollectionViewWithDeletedExercise(segue: UIStoryboardSegue) {
+        
+        var id: Int?
+        if let sourceViewController = segue.source as? ExerciseViewController {
+            id = sourceViewController.indexOfExercise
+        }
+        exerciseName.remove(at: id!)
+        exerciseTime.remove(at: id!)
+        exercisesTimes = exerciseTime.joined(separator: ",")
+        exercisesNames = exerciseName.joined(separator: ",")
+        ExercisesTableView.reloadData()
+        
+    }
+    
+    
     var db: OpaquePointer?
     
     override func viewDidLoad() {
@@ -234,18 +283,21 @@ class newTrainingViewController: UIViewController, UITableViewDataSource, UITabl
         
         self.newTrainingName.delegate = self
         exerciseName = exercisesNames.components(separatedBy: ",")
+        exerciseName.removeLast()
         newTrainingButtonSelf.layer.cornerRadius = newTrainingButtonSelf.frame.width/2
         newTrainingButtonSelf.layer.shadowColor = UIColor.black.cgColor
         newTrainingButtonSelf.layer.shadowOffset = CGSize(width: 1, height: 2)
         newTrainingButtonSelf.layer.shadowOpacity = 0.3
         newTrainingButtonSelf.layer.shadowRadius = 4.0
         newTrainingButtonSelf.layer.masksToBounds = false
-        exerciseAddButtonSelf.layer.cornerRadius = 10
+        exerciseAddButtonSelf.layer.cornerRadius = exerciseAddButtonSelf.frame.height/2
         exerciseAddButtonSelf.layer.shadowColor = UIColor.black.cgColor
         exerciseAddButtonSelf.layer.shadowOffset = CGSize(width: 1, height: 2)
         exerciseAddButtonSelf.layer.shadowOpacity = 0.3
         exerciseAddButtonSelf.layer.shadowRadius = 4.0
         exerciseAddButtonSelf.layer.masksToBounds = false
+        
+        createGradientLayer(for: gradienLine)
         // Do any additional setup after loading the view.
     }
     
@@ -257,5 +309,16 @@ class newTrainingViewController: UIViewController, UITableViewDataSource, UITabl
         textField.resignFirstResponder()
         return (true)
     }
+    
+    func createGradientLayer(for view: UIView) {
+        let gradientLayer: CAGradientLayer
+        gradientLayer = CAGradientLayer()
+        gradientLayer.frame = view.bounds
+        gradientLayer.colors = [UIColor(red:0, green:0.49, blue: 1.0, alpha: 1).cgColor, UIColor(red:0.58, green:0.75, blue:1, alpha: 1).cgColor,UIColor(red:0, green:0.49, blue: 1.0, alpha: 1).cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0,y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1,y: 0.5)
+        view.layer.addSublayer(gradientLayer)
+    }
+    
 
 }

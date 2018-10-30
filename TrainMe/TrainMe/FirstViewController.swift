@@ -186,15 +186,11 @@ class FirstViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
     
     @IBAction func unwindToTrainingCollectionViewDeletedCell(segue: UIStoryboardSegue) {
-        print("\n\nYES Segue\n\n")
         var id: Int?
         if let sourceViewController = segue.source as? TrainigsViewController {
             id = sourceViewController.indexItem!
         }
-         print("\n\nYES ID\n\n")
-         print("\n\n id = \(id!) \n\n")
         delete(id!)
-         print("\n\nYES Delete\n\n")
         clearAll()
         loadDataFromDatabase()
         TrainingsCollectionViewController.reloadData()

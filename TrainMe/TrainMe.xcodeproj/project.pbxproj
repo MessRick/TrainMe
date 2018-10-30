@@ -14,6 +14,7 @@
 		899957B42152E71D00451B9A /* FoodsViewComtroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899957B32152E71D00451B9A /* FoodsViewComtroller.swift */; };
 		89AC7B872152C8EA00BB0F88 /* FoodClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AC7B862152C8EA00BB0F88 /* FoodClass.swift */; };
 		89B1DBB52152AD3B00987BF8 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B1DBB42152AD3B00987BF8 /* CollectionViewCell.swift */; };
+		89B50A5A21876E2A00CEB1D5 /* ExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B50A5921876E2A00CEB1D5 /* ExerciseViewController.swift */; };
 		89D5ECEC21552D1C00F1F827 /* TrainingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D5ECEB21552D1B00F1F827 /* TrainingCollectionViewCell.swift */; };
 		89D5ECEE2155309100F1F827 /* TrainigsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D5ECED2155309100F1F827 /* TrainigsViewController.swift */; };
 		89D67CAD2159140C005FAB48 /* newTrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D67CAC2159140C005FAB48 /* newTrainingViewController.swift */; };
@@ -53,6 +54,7 @@
 		899957B32152E71D00451B9A /* FoodsViewComtroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodsViewComtroller.swift; sourceTree = "<group>"; };
 		89AC7B862152C8EA00BB0F88 /* FoodClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodClass.swift; sourceTree = "<group>"; };
 		89B1DBB42152AD3B00987BF8 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		89B50A5921876E2A00CEB1D5 /* ExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewController.swift; sourceTree = "<group>"; };
 		89D5ECEB21552D1B00F1F827 /* TrainingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingCollectionViewCell.swift; sourceTree = "<group>"; };
 		89D5ECED2155309100F1F827 /* TrainigsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainigsViewController.swift; sourceTree = "<group>"; };
 		89D67CAC2159140C005FAB48 /* newTrainingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newTrainingViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				891763B52155225300274B37 /* TrainigsClass.swift */,
 				89E78F902150140700584489 /* SecondViewController.swift */,
 				89E78F922150140700584489 /* Main.storyboard */,
+				89B50A5921876E2A00CEB1D5 /* ExerciseViewController.swift */,
 				890F8E7E2184A8C6001E2CED /* NewExerciseViewController.swift */,
 				89D67CAC2159140C005FAB48 /* newTrainingViewController.swift */,
 				89B1DBB42152AD3B00987BF8 /* CollectionViewCell.swift */,
@@ -316,6 +319,7 @@
 				891763B62155225300274B37 /* TrainigsClass.swift in Sources */,
 				899957B42152E71D00451B9A /* FoodsViewComtroller.swift in Sources */,
 				89D67CAD2159140C005FAB48 /* newTrainingViewController.swift in Sources */,
+				89B50A5A21876E2A00CEB1D5 /* ExerciseViewController.swift in Sources */,
 				890F8E7F2184A8C6001E2CED /* NewExerciseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

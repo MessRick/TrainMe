@@ -29,6 +29,8 @@ class TrainigsViewController: UIViewController {
     var isTrainingEditing = false
     var colotNow: UIColor?
     var indexItem: Int?
+    var NiceTime = ""
+    var isTrainingGoing =  false
 
     @IBOutlet weak var EditButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
@@ -59,17 +61,31 @@ class TrainigsViewController: UIViewController {
   
     
     @IBAction func StartButton(_ sender: UIButton) {
+        if(!isTrainingGoing){
+        StartButtonSelf.setTitle("Stop", for: .normal)
+        StartButtonSelf.tintColor = .red
+        isTrainingGoing = !isTrainingGoing
         timer.invalidate()
         HousTime = Int(timerSec[i])!/1200
         MinutesTime = (Int(timerSec[i])!%1200)/60
         SecondsTime = ((Int(timerSec[i])!%1200)%60)
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+        } else {
+            timer.invalidate()
+            StartButtonSelf.setTitle("Start", for: .normal)
+            StartButtonSelf.tintColor = colotNow
+            MakeThisTimeNiceAgain(timerSec[i],timerSec[i],timerSec[i])
+            TimerLabel.text = NiceTime
+            isTrainingGoing = !isTrainingGoing
+        }
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        colotNow = EditButton.currentTitleColor
         
         TrainingNameLabel.text = labelName
         exerciseName = exerciseNameDefaulte.components(separatedBy: ",")
@@ -78,7 +94,8 @@ class TrainigsViewController: UIViewController {
         timerSec.removeLast()
         
         ExerciseNameLabel.text = exerciseName[0]
-        TimerLabel.text = "\(Int(timerSec[i])!/1200):\((Int(timerSec[i])!%1200)/60):\(((Int(timerSec[i])!%1200)%60))"
+        MakeThisTimeNiceAgain(timerSec[i],timerSec[i],timerSec[i])
+        TimerLabel.text = NiceTime
         
         createGradientLayer(for: LineAfterNameOfTraining)
         StartButtonSelf.layer.cornerRadius = StartButtonSelf.frame.width/2
@@ -105,6 +122,27 @@ class TrainigsViewController: UIViewController {
         deleteButton.layer.masksToBounds = false
         // Do any additional setup after loading the view.
     }
+    
+    
+    func MakeThisTimeNiceAgain(_ Hours: String!,_ Minutes: String!,_ Seconds: String!){
+        NiceTime = ""
+        if(Int(Hours)!/1200 < 10 ){
+            NiceTime += "0\(Int(Hours)!/1200):"
+        } else {
+            NiceTime += "\(Int(Hours)!/1200):"
+        }
+        if((Int(Minutes)!%1200)/60 < 10 ){
+            NiceTime += "0\((Int(Minutes)!%1200)/60):"
+        } else {
+            NiceTime += "\((Int(Minutes)!%1200)/60):"
+        }
+        if(((Int(Seconds)!%1200)%60) < 10 ){
+            NiceTime += "0\(((Int(Seconds)!%1200)%60))"
+        } else {
+            NiceTime += "\(((Int(Seconds)!%1200)%60))"
+        }
+    }
+    
     @objc func timerAction() {
         
         if SecondsTime == 0 && MinutesTime == 0 && HousTime == 0 && i+1 < exerciseName.count{
@@ -129,7 +167,11 @@ class TrainigsViewController: UIViewController {
             MinutesTime = (Int(timerSec[i])!%1200)/60
             SecondsTime = ((Int(timerSec[i])!%1200)%60)
             ExerciseNameLabel.text = exerciseName[i]
-            TimerLabel.text = timerSec[i]
+            MakeThisTimeNiceAgain(String(HousTime),String(MinutesTime),String(SecondsTime))
+            TimerLabel.text = NiceTime
+            StartButtonSelf.setTitle("Start", for: .normal)
+            StartButtonSelf.tintColor = colotNow
+            isTrainingGoing = !isTrainingGoing
             
         } else if SecondsTime == 0 {
             if(MinutesTime>0){
@@ -140,12 +182,13 @@ class TrainigsViewController: UIViewController {
                 SecondsTime = 59
                 HousTime -= 1
             }
-            
-            TimerLabel.text = "\(HousTime):\(MinutesTime):\(SecondsTime)"
+            MakeThisTimeNiceAgain(String(HousTime),String(MinutesTime),String(SecondsTime))
+            TimerLabel.text = NiceTime
             
         } else {
         SecondsTime -= 1
-            TimerLabel.text = "\(HousTime):\(MinutesTime):\(SecondsTime)"
+            MakeThisTimeNiceAgain(String(HousTime),String(MinutesTime),String(SecondsTime))
+            TimerLabel.text = NiceTime
         }
     }
     
