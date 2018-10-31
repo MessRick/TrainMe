@@ -248,6 +248,7 @@ class FirstViewController: UIViewController, UICollectionViewDataSource, UIColle
         sqlite3_finalize(deleteStatement)
     }
     
-
+   
 }
+
 

@@ -20,6 +20,8 @@ class SecondViewController: UIViewController,UICollectionViewDataSource,UICollec
     
     let filePaths = ["foods_recipe/tako_salsa-verde","foods_recipe/syrnyy_kartofel","foods_recipe/oladi_iz_kabachkov","foods_recipe/zharenyy_fenhel","foods_recipe/gorohovyy_sup","foods_recipe/lepeshki_iz_kartofelya_i_chechevicy","foods_recipe/steyki_iz_cvetnoy_kapusty"]
     
+    let dishessCallories = ["389 kcal & 15,9 gram of protein"," 365 kcal & 19 gram of protein","89 kcal & 7 gram of protein","446 kcal & 33,5 gram of protein","400 kcal & 24,8 gram of protein","329 kcal & 16 gram of protein","350 kcal & 22 gram of protein"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +51,7 @@ class SecondViewController: UIViewController,UICollectionViewDataSource,UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
 
-        cell.caloriesLabel.text = "20 ccal"
+        cell.caloriesLabel.text = dishessCallories[indexPath.item]
         cell.CellLabel.text = namesOfDiches[indexPath.item]
       
         cell.MyImage.image = UIImage(named: imagesName[indexPath.item])

@@ -31,6 +31,7 @@ class TrainigsViewController: UIViewController {
     var indexItem: Int?
     var NiceTime = ""
     var isTrainingGoing =  false
+    var isSarted = false
 
     @IBOutlet weak var EditButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
@@ -61,22 +62,33 @@ class TrainigsViewController: UIViewController {
   
     
     @IBAction func StartButton(_ sender: UIButton) {
+        if(!isSarted){
+            isSarted = true
+            StartButtonSelf.setTitle("Pause", for: .normal)
+            StartButtonSelf.tintColor = .red
+            StartButtonSelf.titleLabel?.font = UIFont(name: "AvenirNext-DemiBold",size: 34)
+            HousTime = Int(timerSec[i])!/1200
+            MinutesTime = (Int(timerSec[i])!%1200)/60
+            SecondsTime = ((Int(timerSec[i])!%1200)%60)
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+            isTrainingGoing = !isTrainingGoing
+        }else{
+        
         if(!isTrainingGoing){
-        StartButtonSelf.setTitle("Stop", for: .normal)
-        StartButtonSelf.tintColor = .red
         isTrainingGoing = !isTrainingGoing
         timer.invalidate()
-        HousTime = Int(timerSec[i])!/1200
-        MinutesTime = (Int(timerSec[i])!%1200)/60
-        SecondsTime = ((Int(timerSec[i])!%1200)%60)
+        StartButtonSelf.setTitle("Pause", for: .normal)
+        StartButtonSelf.tintColor = .red
+        StartButtonSelf.titleLabel?.font = UIFont(name: "AvenirNext-DemiBold",size: 34)
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+
         } else {
             timer.invalidate()
             StartButtonSelf.setTitle("Start", for: .normal)
             StartButtonSelf.tintColor = colotNow
-            MakeThisTimeNiceAgain(timerSec[i],timerSec[i],timerSec[i])
-            TimerLabel.text = NiceTime
+             StartButtonSelf.titleLabel?.font = UIFont(name: "AvenirNext-DemiBold",size: 40)
             isTrainingGoing = !isTrainingGoing
+        }
         }
         
     }
@@ -157,7 +169,8 @@ class TrainigsViewController: UIViewController {
             MinutesTime = (Int(timerSec[i])!%1200)/60
             SecondsTime = ((Int(timerSec[i])!%1200)%60)
             ExerciseNameLabel.text = exerciseName[i]
-            TimerLabel.text = timerSec[i]
+            MakeThisTimeNiceAgain(String(timerSec[i]),String(timerSec[i]),String(timerSec[i]))
+            TimerLabel.text = NiceTime
         } else if i+1 == exerciseName.count && SecondsTime == 0 && MinutesTime == 0 && HousTime == 0{
             AudioServicesPlaySystemSound(SystemSoundID(1330))
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
@@ -167,7 +180,7 @@ class TrainigsViewController: UIViewController {
             MinutesTime = (Int(timerSec[i])!%1200)/60
             SecondsTime = ((Int(timerSec[i])!%1200)%60)
             ExerciseNameLabel.text = exerciseName[i]
-            MakeThisTimeNiceAgain(String(HousTime),String(MinutesTime),String(SecondsTime))
+            MakeThisTimeNiceAgain(timerSec[i],timerSec[i],timerSec[i])
             TimerLabel.text = NiceTime
             StartButtonSelf.setTitle("Start", for: .normal)
             StartButtonSelf.tintColor = colotNow
@@ -182,12 +195,12 @@ class TrainigsViewController: UIViewController {
                 SecondsTime = 59
                 HousTime -= 1
             }
-            MakeThisTimeNiceAgain(String(HousTime),String(MinutesTime),String(SecondsTime))
+            MakeThisTimeNiceAgain(String(HousTime*1200),String(MinutesTime*60),String(SecondsTime))
             TimerLabel.text = NiceTime
             
         } else {
         SecondsTime -= 1
-            MakeThisTimeNiceAgain(String(HousTime),String(MinutesTime),String(SecondsTime))
+            MakeThisTimeNiceAgain(String(HousTime*1200),String(MinutesTime*60),String(SecondsTime))
             TimerLabel.text = NiceTime
         }
     }

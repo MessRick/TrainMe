@@ -271,6 +271,13 @@ class newTrainingViewController: UIViewController, UITableViewDataSource, UITabl
         exerciseTime.remove(at: id!)
         exercisesTimes = exerciseTime.joined(separator: ",")
         exercisesNames = exerciseName.joined(separator: ",")
+        if(!exercisesNames.isEmpty){
+             exercisesNames += ","
+        }
+        if (!exercisesNames.isEmpty){
+            exercisesTimes += ","
+        }
+        
         ExercisesTableView.reloadData()
         
     }
