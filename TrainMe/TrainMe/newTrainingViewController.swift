@@ -174,17 +174,7 @@ class newTrainingViewController: UIViewController, UITableViewDataSource, UITabl
         exercisesNames = ""
         exercisesTimes = ""
         newTrainingName.text?.removeAll()
-        
-//        let alertController = UIAlertController(title: "Saved", message: "Training was saved", preferredStyle: .alert)
-//
-//        self.present(alertController, animated: true, completion:nil)
-//
-//
-//        let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
-//            print("You've pressed OK button");
-//        }
-//
-//        alertController.addAction(OKAction)
+
         }
     
     }

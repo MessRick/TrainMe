@@ -13,14 +13,12 @@ class ExerciseViewController: UIViewController {
     @IBOutlet weak var ExerciseName: UILabel!
     @IBOutlet weak var ExerciseTime: UILabel!
     @IBOutlet weak var DeleteButton: UIButton!
-
     @IBOutlet weak var GradientLine: UIView!
     
     var indexOfExercise: Int?
     var Name: String!
     var Time: String!
     var NiceTime = ""
-    
     
     @IBAction func DeletingExercise(_ sender: UIButton) {
         
@@ -57,10 +55,7 @@ class ExerciseViewController: UIViewController {
         
         createGradientLayer(for: GradientLine)
 
-        // Do any additional setup after loading the view.
     }
-    
-
     /*
     // MARK: - Navigation
 

@@ -44,12 +44,5 @@ class FoodsViewComtroller: UIViewController {
         print(contentRect.size)
     }
     
-//    static func update(_ name: String,_ imageName: String,_ recipe: String) -> FoodsViewComtroller{
-//        let newViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "IdentifierOfYouViewController") as! FoodsViewComtroller
-//        
-//        newViewController.FoodViewLabel.text = name + "\n" + recipe
-//        newViewController.FoodViewImage.image = UIImage(named: imageName)
-//        return newViewController
-//    }
-    
+
 }
