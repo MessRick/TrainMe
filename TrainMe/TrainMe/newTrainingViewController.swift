@@ -49,37 +49,6 @@ class newTrainingViewController: UIViewController, UITableViewDataSource, UITabl
     
     @IBAction func exerciseAddButton(_ sender: UIButton) {
         
-//        let name = exerciseName.text!
-//        let time = exerciseTime.text!
-//        if(name.isEmpty){
-//            print("name is empty")
-//            let alertController = UIAlertController(title: "Name is empty", message: "Please enter a name of exercise", preferredStyle: .alert)
-//            
-//            self.present(alertController, animated: true, completion:nil)
-//            
-//            
-//            let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
-//                print("You've pressed OK button");
-//            }
-//            alertController.addAction(OKAction)
-//        } else
-//        if(time.isEmpty){
-//            let alertController = UIAlertController(title: "TimeField is empty", message: "Please enter a time of exercise", preferredStyle: .alert)
-//            
-//            self.present(alertController, animated: true, completion:nil)
-//            
-//            
-//            let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
-//                print("You've pressed OK button");
-//            }
-//            alertController.addAction(OKAction)
-//            print("time is empty")
-//        } else {
-//        exercisesNames.append(name+",")
-//        exercisesTimes.append(time+",")
-//        exerciseTime.text?.removeAll()
-//        exerciseName.text?.removeAll()
-//        }
     }
     
     

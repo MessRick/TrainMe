@@ -72,21 +72,14 @@ class FirstViewController: UIViewController, UICollectionViewDataSource, UIColle
         newcell.NameLabel.text = simpleTrainigs[indexPath.item]
         
         switch typesOfPlaces[indexPath.item] {
-        case 1:
+        case 0:
             newcell.conditionLabel.text = "gym"
-        case 2:
+        case 1:
             newcell.conditionLabel.text = "outside"
         default:
             newcell.conditionLabel.text = "home"
         }
-        //newcell.conditionLabel.text =
-        
-//        let gradient = CAGradientLayer()
-//        gradient.frame =  CGRect(origin: CGPoint.zero, size: newcell.frame.size)
-//        gradient.colors = [UIColor.red.cgColor, UIColor.yellow.cgColor]
-//        gradient.cornerRadius = 10
-//       // gradient.borderColor = [UIColor.blue.cgColor, UIColor.green.cgColor]
-//        newcell.layer.insertSublayer(gradient, at: 0)
+      
         return newcell
     }
     
@@ -160,17 +153,6 @@ class FirstViewController: UIViewController, UICollectionViewDataSource, UIColle
         db = nil
     }
     
-//    @objc func populate()
-//    {
-//        simpleTrainigs = []
-//        exercisesTimesString = []
-//        exercisesNamesString = []
-//        typesOfPlaces = []
-//        loadDataFromDatabase()
-//        TrainingsCollectionViewController.reloadData()
-//        //refresher.endRefreshing()
-//    }
-//    
     @IBAction func unwindToTrainingCollectionViewViewController(segue: UIStoryboardSegue) {
         clearAll()
         loadDataFromDatabase()
